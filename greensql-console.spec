@@ -5,12 +5,12 @@
 
 Summary:	Manages a GreenSQL Database Firewall
 Name:		greensql-console
-Version:	0.4.4
+Version:	0.4.5
 Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.greensql.net/
-Source0:	http://www.greensql.net/public/releases/%{name}.%{version}.tar.gz
+Source0:	http://www.greensql.net/public/releases/%{name}-%{version}.tar.gz
 Patch0:		greensql-console-mdv_conf.diff
 Requires(post): rpm-helper
 Requires(postun): rpm-helper
@@ -28,7 +28,7 @@ Database Firewall.
 
 %prep
 
-%setup -q -n %{name}
+%setup -q -n green
 %patch0 -p1
 
 %build
