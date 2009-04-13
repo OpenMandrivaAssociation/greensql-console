@@ -5,7 +5,7 @@
 
 Summary:	Manages a GreenSQL Database Firewall
 Name:		greensql-console
-Version:	0.4.5
+Version:	0.5.0
 Release:	%mkrel 1
 License:	GPLv2
 Group:		System/Servers
@@ -28,7 +28,7 @@ Database Firewall.
 
 %prep
 
-%setup -q -n green
+%setup -q -n green-%{version}
 %patch0 -p1
 
 %build
@@ -82,4 +82,3 @@ rm -rf %{buildroot}
 %attr(0700,apache,apache) %dir /var/lib/%{name}
 %attr(0700,apache,apache) %dir /var/lib/%{name}/smarty
 %attr(0700,apache,apache) %dir /var/lib/%{name}/smarty/templates_c
-
