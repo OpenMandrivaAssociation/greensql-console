@@ -1,0 +1,86 @@
+diff -Naur green-0.5.0/config-new.php green-0.5.0.oden/config-new.php
+--- green-0.5.0/config-new.php	2009-03-16 18:22:59.000000000 +0100
++++ green-0.5.0.oden/config-new.php	2009-04-13 10:43:48.000000000 +0200
+@@ -4,7 +4,7 @@
+ #$demo_version = 1;
+ 
+ # greensql version
+-$version = "0.4.5";
++$version = "0.5.0";
+ 
+ # MySQL Database IP address
+ $db_host = "127.0.0.1";
+@@ -21,12 +21,12 @@
+ 
+ # If you run greensql-fw service on the same computer you can specify
+ # location of it's log file. It will be visible as part of the console.
+-$log_file = "/var/log/greensql.log";
++$log_file = "/var/log/greensql/greensql.log";
+ 
+ # Number of lines to show when viewing log file.
+ $num_log_lines = 200;
+ 
+ # Generated web pages cache
+-$cache_dir = "templates_c";
++$cache_dir = "/var/lib/greensql-console/smarty/templates_c";
+ 
+ ?>
+diff -Naur green-0.5.0/config.php green-0.5.0.oden/config.php
+--- green-0.5.0/config.php	2009-03-16 18:22:59.000000000 +0100
++++ green-0.5.0.oden/config.php	2009-04-13 10:37:16.000000000 +0200
+@@ -21,12 +21,12 @@
+ 
+ # If you run greensql-fw service on the same computer you can specify
+ # location of it's log file. It will be visible as part of the console.
+-$log_file = "/var/log/greensql.log";
++$log_file = "/var/log/greensql/greensql.log";
+ 
+ # Number of lines to show when viewing log file.
+ $num_log_lines = 200;
+ 
+ # Generated web pages cache
+-$cache_dir = "templates_c";
++$cache_dir = "/var/lib/greensql-console/smarty/templates_c";
+ 
+ ?>
+diff -Naur green-0.5.0/lib.php green-0.5.0.oden/lib.php
+--- green-0.5.0/lib.php	2009-03-16 18:22:59.000000000 +0100
++++ green-0.5.0.oden/lib.php	2009-04-13 10:37:16.000000000 +0200
+@@ -10,15 +10,17 @@
+     session_start();
+ }
+ 
+-include_once 'config.php';
++include_once '/etc/greensql-console/config.php';
+ 
+ header("Cache-Control: no-cache, must-revalidate");
+ header("Expires: Mon, 26 jul 1997 05:00:00 GMT");
+ 
+ validate_installation();
+-require 'libs/Smarty.class.php';
++require '/usr/share/smarty/Smarty.class.php';
+ $smarty = new Smarty;
+ $smarty->compile_check = true;
++global $template_dir;
++$smarty->template_dir = 'templates';
+ global $cache_dir;
+ $smarty->compile_dir = $cache_dir;
+ global $version;
+@@ -79,7 +81,7 @@
+ 
+ function db_connect()
+ {
+-  include 'config.php';
++  include '/etc/greensql-console/config.php';
+   
+   #print "dbuser $dbuser $db_user\n";
+   if (@mysql_connect("$db_host:$db_port",$db_user,$db_pass) == false)
+@@ -117,7 +119,7 @@
+     if ( ($db_error = db_connect()) != "")
+     {
+         $msg .= "<font color='red'>$db_error</font><br/>";
+-        $msg .= "Please alter <i>config.php</i> file with a proper database settings.<br/>This file is found in the application directory.<br/>";
++        $msg .= "Please alter <i>/etc/greensql-console/config.php</i> file with a proper database settings.<br/>This file is found in the application directory.<br/>";
+         $bad = 1;
+     } else {
+         $msg .= "Connection to <font color='green'>$db_name</font> established.<br/>\n";
