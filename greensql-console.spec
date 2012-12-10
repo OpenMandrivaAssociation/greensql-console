@@ -82,3 +82,30 @@ rm -rf %{buildroot}
 %attr(0700,apache,apache) %dir /var/lib/%{name}
 %attr(0700,apache,apache) %dir /var/lib/%{name}/smarty
 %attr(0700,apache,apache) %dir /var/lib/%{name}/smarty/templates_c
+
+
+%changelog
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.5.0-3mdv2011.0
++ Revision: 619253
+- the mass rebuild of 2010.0 packages
+
+* Fri Sep 11 2009 Thierry Vignaud <tv@mandriva.org> 0.5.0-2mdv2010.0
++ Revision: 437812
+- rebuild
+
+* Mon Apr 13 2009 Oden Eriksson <oeriksson@mandriva.com> 0.5.0-1mdv2009.1
++ Revision: 366739
+- 0.5.0
+- rediffed P0
+
+* Mon Dec 08 2008 Oden Eriksson <oeriksson@mandriva.com> 0.4.5-1mdv2009.1
++ Revision: 311853
+- 0.4.5
+
+* Mon Nov 03 2008 Oden Eriksson <oeriksson@mandriva.com> 0.4.4-1mdv2009.1
++ Revision: 299494
+- import greensql-console
+
+
+* Mon Nov 03 2008 Oden Eriksson <oeriksson@mandriva.com> 0.4.4-1mdv2009.0
+- initial Mandriva package
