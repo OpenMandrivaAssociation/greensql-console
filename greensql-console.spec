@@ -6,7 +6,7 @@
 Summary:	Manages a GreenSQL Database Firewall
 Name:		greensql-console
 Version:	0.5.0
-Release:	%mkrel 3
+Release:	4
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.greensql.net/
@@ -21,7 +21,6 @@ BuildRequires:	apache-base >= 2.0.54
 Suggests:	greensql-fw
 Suggests:	mysql
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The greensql-console package is web management tool used to manage GreenSQL
@@ -35,8 +34,6 @@ Database Firewall.
 %build
 
 %install
-rm -rf %{buildroot}
-
 install -d %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d
 install -d %{buildroot}%{_sysconfdir}/%{name}
 install -d %{buildroot}/var/www/%{name}
@@ -69,7 +66,7 @@ rm -rf %{buildroot}/var/www/%{name}/templates_c
 %_postun_webapp
 
 %clean
-rm -rf %{buildroot}
+
 
 %files
 %defattr(0644,root,root,0755)
