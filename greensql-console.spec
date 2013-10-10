@@ -15,6 +15,7 @@ Patch0:		greensql-console-mdv_conf.diff
 Requires(post): rpm-helper
 Requires(postun): rpm-helper
 Requires:	apache-mod_php php-mysql
+Requires:   apache-mod_socache_shmcb
 Requires:	php-smarty >= 2.3.0
 BuildRequires:	apache-base >= 2.0.54
 Suggests:	greensql-fw
@@ -50,9 +51,7 @@ cat > %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d/%{name}.conf << EOF
 Alias /%{name} /var/www/%{name}
 
 <Directory /var/www/%{name}>
-    Order Deny,Allow
-    Deny from All
-    Allow from 127.0.0.1
+    Require host 127.0.0.1
     ErrorDocument 403 "Access denied per %{_sysconfdir}/httpd/conf/webapps.d/%{name}.conf"
 </Directory>
 EOF
