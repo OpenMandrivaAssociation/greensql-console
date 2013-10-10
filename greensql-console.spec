@@ -1,4 +1,4 @@
-%define _requires_exceptions pear(/usr/share/smarty/Smarty.class.php)
+%define __noautoreq 'pear(/usr/share/smarty/Smarty.class.php)'
 
 %define _enable_debug_packages %{nil}
 %define debug_package          %{nil}
