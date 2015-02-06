@@ -6,7 +6,7 @@
 Summary:	Manages a GreenSQL Database Firewall
 Name:		greensql-console
 Version:	0.5.0
-Release:	4
+Release:	5
 License:	GPLv2
 Group:		System/Servers
 URL:		http://www.greensql.net/
