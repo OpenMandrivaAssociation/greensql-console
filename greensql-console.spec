@@ -9,7 +9,7 @@ Version:	0.5.0
 Release:	5
 License:	GPLv2
 Group:		System/Servers
-URL:		http://www.greensql.net/
+URL:		https://www.greensql.net/
 Source0:	http://www.greensql.net/public/releases/%{name}-%{version}.tar.gz
 Patch0:		greensql-console-mdv_conf.diff
 Requires(post): rpm-helper
